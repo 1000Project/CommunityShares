@@ -1,0 +1,37 @@
+Pseudocode for Reward and Burn Logic
+START Daily Reward/Burn Process
+
+Determine Day Type (Reward or Burn):
+
+Check whether today is a Reward Day or a Burn Day.
+Retrieve Wallet Data:
+
+Pull all wallet addresses and balances from the blockchain.
+Apply Filters to Determine Eligibility: a. Minimum Balance Check:
+
+Exclude wallets holding less than 1,000 tokens. b. Cooldown Period Check:
+Exclude wallets currently in cooldown due to recent sales or transfers. c. Ineligible Wallets:
+Exclude contract wallets (e.g., development, marketing, team wallets).
+Exclude blacklisted wallets identified as malicious actors.
+Generate the List of Eligible Wallets:
+
+Save the filtered wallet addresses to a local or off-chain database for further processing.
+Request Random Wallet Selection:
+
+Use Chainlink VRF to randomly select 10% of eligible wallets, capped at 1,000 wallets.
+Retrieve and save the selected wallet addresses.
+Execute Reward or Burn Process Based on Day Type: a. If Reward Day:
+
+Calculate the reward amount (1% of the Reward Wallet balance).
+Split the reward amount equally among the selected wallets.
+Execute transactions to transfer rewards to the selected wallets. b. If Burn Day:
+Calculate the burn amount (1% of the Reward Wallet balance).
+Execute the burn function to permanently reduce the token supply.
+Log Transactions for Transparency:
+
+Record the details of the reward distribution or burn process on-chain for public visibility.
+Notify Holders (Optional):
+
+Use Telegram, Discord, or email notifications to inform holders about the rewards distributed or tokens burned.
+END Process
+

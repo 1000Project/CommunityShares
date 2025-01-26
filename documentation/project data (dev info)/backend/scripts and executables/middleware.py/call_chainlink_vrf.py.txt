@@ -1,0 +1,25 @@
+import requests
+import json
+
+CHAINLINK_URL = "https://chainlink-vrf-api.com"  # Replace with actual endpoint
+
+def call_chainlink_vrf(wallets):
+    """
+    Call Chainlink VRF to select random wallets for reward distribution.
+    """
+    response = requests.post(CHAINLINK_URL, json={"wallets": wallets})
+    return response.json()
+
+def main():
+    with open("data/exported_wallets.json", "r") as f:
+        wallets = json.load(f)
+
+    vrf_response = call_chainlink_vrf(wallets)
+
+    # Save the VRF results
+    with open("data/vrf_results.json", "w") as f:
+        json.dump(vrf_response, f)
+    print("Chainlink VRF results saved.")
+
+if __name__ == "__main__":
+    main()
