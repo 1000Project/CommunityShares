@@ -1,6 +1,3 @@
-## Smart Contract Framework for Reward and Burn System
-
-
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -65,7 +62,7 @@ contract RewardBurnWallet is ERC20, Ownable, VRFConsumerBase {
         uint256 rewardAmount = (rewardWalletBalance * REWARD_PERCENTAGE) / 100;
         rewardWalletBalance -= rewardAmount;
 
-        // Fetch eligible wallets (off-chain logic required to populate eligibleWallets)
+        // Ensure eligible wallets have been set
         require(eligibleWallets.length > 0, "No eligible wallets available");
         requestRandomness(keyHash, fee);
     }
@@ -124,3 +121,4 @@ contract RewardBurnWallet is ERC20, Ownable, VRFConsumerBase {
         eligibleWallets = wallets;
     }
 }
+
