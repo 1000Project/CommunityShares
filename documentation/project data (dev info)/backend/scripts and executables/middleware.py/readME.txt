@@ -1,161 +1,146 @@
-README for the 1000 Project Middleware
+# **1000 Project Middleware README**
 
-Overview
+## **Overview**
+The 1000 Project middleware is the backbone of our off-chain operations, enabling efficient data processing, filtering, and interaction with blockchain components. This modular framework minimizes gas fees and computational overhead, supporting hybrid on/off-chain functionality to optimize the reward and burn mechanisms.
 
-The middleware for the 1000 Project is a modular system designed to streamline off-chain computations, optimize cost efficiency, and support the reward and burn logic. This document outlines the updated workflow, individual script functionalities, and setup instructions.
+---
 
-Updated Workflow
+## **Features**
+- **Snapshot Optimization**: Incremental updates minimize the need for full daily snapshots, improving data efficiency.
+- **Eligibility Filtering**: Dynamic logic for wallet qualification based on balance, cooldown status, and blacklist criteria.
+- **Change-Detection Logic**: Detects and processes only altered data for streamlined performance.
+- **Weighted Scoring Mechanism**: Ensures fairness by dynamically scoring wallets based on holding behavior and transaction history.
+- **Integration with Chainlink VRF**: Ensures randomness in wallet selection for rewards.
 
-Data Collection (Off-Chain)
+---
 
-Script: fetch_wallet_data.py
+## **Setup Instructions**
 
-Fetch incremental wallet data updates from the blockchain.
+### **1. Clone Repository**
+```bash
+git clone https://github.com/1000Project/middleware.git
+cd middleware
+```
 
-Store changes in the middleware database for further processing.
-
-Filter Eligible Wallets (Off-Chain)
-
-Script: filter_eligible_wallets.py
-
-Exclude wallets that:
-
-Hold less than the minimum required balance.
-
-Are flagged for cooldown periods or suspected behavior.
-
-Are contract or blacklisted wallets.
-
-Score Eligible Wallets (Off-Chain)
-
-Script: score_wallets.py
-
-Assign weighted scores based on criteria:
-
-Holding duration.
-
-Balance stability.
-
-Other dynamic metrics.
-
-Store wallet scores in the middleware database.
-
-Select Wallets Using Chainlink VRF (On-Chain)
-
-Script: call_chainlink_vrf.py
-
-Randomly select 10% of eligible wallets (max 1,000).
-
-Use Chainlink VRF for randomness verification.
-
-Execute Daily Operations (On-Chain)
-
-Script: export_selected_wallets.py
-
-On Reward Days:
-
-Distribute 1% of the reward wallet to selected wallets.
-
-Log transactions for transparency.
-
-On Burn Days:
-
-Execute token burns (1% of the reward wallet).
-
-Post-Execution Updates (Off-Chain)
-
-Update middleware database to reflect new balances and cooldown flags.
-
-Notify holders via Telegram/Discord bots of rewards, cooldowns, or updates.
-
-Script Descriptions
-
-fetch_wallet_data.py
-
-Purpose: Fetch wallet data from the blockchain with incremental updates.
-
-Key Features: Reduces overhead by only updating modified or new wallet data.
-
-filter_eligible_wallets.py
-
-Purpose: Apply eligibility filters to wallet data.
-
-Filters: Minimum balance, cooldown flags, blacklist exclusion.
-
-score_wallets.py
-
-Purpose: Assign scores to eligible wallets based on weighted criteria.
-
-Scoring Logic: Holding duration, balance stability, dynamic metrics.
-
-call_chainlink_vrf.py
-
-Purpose: Use Chainlink VRF to randomly select wallets.
-
-Output: List of randomly selected wallets.
-
-export_selected_wallets.py
-
-Purpose: Distribute rewards or execute burns based on daily operations.
-
-Includes: Logging transactions on-chain.
-
-setupanddependencies.py
-
-Purpose: Install required Python libraries and set up dependencies.
-
-mainfunction.py
-
-Purpose: Orchestrates all middleware scripts for seamless workflow execution.
-
-Setup Instructions
-
-Clone the Repository:
-
-git clone <repository-url>
-cd <repository-folder>
-
-Install Dependencies:
-Run the setupanddependencies.py script to install required Python libraries.
-
+### **2. Install Dependencies**
+Run the setup script to install all required Python libraries:
+```bash
 python3 setupanddependencies.py
+```
 
-Run the Middleware:
-Execute the main function to trigger the workflow.
+### **3. Configuration**
+Modify the `config.json` file to include:
+- Blockchain API endpoints
+- Chainlink VRF keys
+- Database credentials
 
-python3 mainfunction.py
+### **4. Execute Scripts**
+- **Fetch Wallet Data**:
+  ```bash
+  python3 fetch_wallet_data.py
+  ```
+- **Filter Eligible Wallets**:
+  ```bash
+  python3 filter_eligible_wallets.py
+  ```
+- **Detect P2P Transfers**:
+  ```bash
+  python3 detect_p2p_transfers.py
+  ```
+- **Export Selected Wallets**:
+  ```bash
+  python3 export_selected_wallets.py
+  ```
+- **Call Chainlink VRF**:
+  ```bash
+  python3 call_chainlink_vrf.py
+  ```
+- **Run Main Functionality**:
+  ```bash
+  python3 mainfunction.py
+  ```
+- **Run Weighted Scoring**:
+  ```bash
+  python3 score_wallets.py
+  ```
 
-Configure Settings:
+---
 
-Update blockchain URLs, APIs, and wallet data settings in the respective scripts.
+## **Workflow Overview**
 
-Modify scoring weights and filters in score_wallets.py and filter_eligible_wallets.py as needed.
+### **Daily Process**
+1. **Incremental Data Retrieval**:
+   - Fetch new or updated wallet data only.
+   - Store metadata in the middleware database.
+2. **Eligibility Filtering**:
+   - Check wallets against criteria:
+     - Minimum balance requirement.
+     - Cooldown flags.
+     - Blacklist exclusions.
+   - Apply weighted scoring to refine wallet eligibility.
+3. **Random Wallet Selection**:
+   - Use Chainlink VRF for secure, unbiased randomness.
+4. **Execute Reward/Burn Logic**:
+   - Distribute rewards or burn tokens as per the daily cycle.
+5. **Log Transactions**:
+   - Record all operations in the middleware database and on-chain where applicable.
 
-Changelog
+---
 
-Latest Updates
+## **Key Changes and Updates**
+- **Incremental Updates**: Reduced computational load by processing only changed data.
+- **Enhanced Filtering Logic**: Added weighted scoring and P2P transfer anomaly detection.
+- **Optimized Workflow**: Consolidated steps for improved efficiency and cost savings.
+- **New Script Additions**: Introduced `score_wallets.py` for weighted scoring.
 
-Incremental Data Updates:
+---
 
-Optimized fetch_wallet_data.py for change-detection logic.
+## **Directory Structure**
+```
+middleware/
+├── config.json           # Configuration file
+├── scripts_and_executables/
+│   ├── setupanddependencies.py
+│   ├── fetch_wallet_data.py
+│   ├── fetch_wallet_data.ver2.py
+│   ├── filter_eligible_wallets.py
+│   ├── filter_eligible_wallets.ver2.py
+│   ├── detect_p2p_transfers.py
+│   ├── detect_p2p_transfers.ver2.py
+│   ├── export_selected_wallets.py
+│   ├── call_chainlink_vrf.py
+│   ├── mainfunction.py
+│   ├── mainfunction.ver2.py
+│   ├── score_wallets.py
+├── logs/                 # Logs for debugging
+├── database/             # Local database for snapshots
+├── README.md             # Documentation
+```
 
-Streamlined Filtering:
+---
 
-Combined multiple checks into filter_eligible_wallets.py.
+## **Testing and Debugging**
 
-Weighted Scoring Mechanism:
+### **1. Unit Tests**
+Run unit tests to validate individual scripts:
+```bash
+python3 -m unittest discover tests/
+```
 
-Added score_wallets.py for scoring eligible wallets.
+### **2. Debug Logs**
+Check the `logs/` directory for detailed error messages and execution summaries.
 
-Cost Optimization:
+---
 
-Prioritized off-chain computations to reduce on-chain gas costs.
+## **Next Steps**
+1. **Middleware Optimization**: Further streamline incremental updates.
+2. **Integration Testing**: Ensure seamless interaction between scripts.
+3. **AI Logic Integration**: Incorporate AI-driven enhancements for scoring and decision-making.
 
-Next Steps
+---
 
-Testing: Validate individual script functionality and full workflow integration.
-
-Documentation: Keep this README updated with further changes.
-
-Feedback: Collaborate with the dev team to refine scripts and processes.
-
+## **Contact**
+For support or contributions, reach out to the project team at:
+- Email: 1000cryptoai@gmail.com
+- Telegram: https://t.me/The1000Project
+- X (formerly Twitter): [@1000CryptoAI](https://x.com/1000CryptoAI)
