@@ -1,0 +1,13 @@
+Subject: Full Git Repo Update 🚀
+
+Hey Funkaclau,
+
+I’ve pushed a full repository update to Git. This includes:
+
+.ver2 scripts for incremental updates and change-detection logic.
+Modifications to existing parts of the workflow for improved efficiency.
+Updated documentation and README for clarity.
+Let me know if you encounter any issues or need clarification on the new workflow.
+
+Cheers,
+PawPaw

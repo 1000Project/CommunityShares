@@ -1,90 +1,161 @@
-The 1000 Project Middleware: README
-Welcome to the middleware for The 1000 Project! This document outlines the purpose, roles, and execution flow for each script. This middleware facilitates a hybrid on-chain/off-chain solution for reward and burn wallet management.
+README for the 1000 Project Middleware
 
 Overview
-The middleware is designed to:
 
-Perform daily wallet filtering for eligibility checks.
-Detect potentially malicious P2P activity.
-Randomly select eligible wallets using Chainlink VRF for rewards.
-Minimize on-chain computation to save gas costs by leveraging off-chain processing.
-Project File Structure
-The middleware comprises seven Python scripts, each with a distinct role in the pipeline:
+The middleware for the 1000 Project is a modular system designed to streamline off-chain computations, optimize cost efficiency, and support the reward and burn logic. This document outlines the updated workflow, individual script functionalities, and setup instructions.
 
-setupanddependencies.py: Prepares the environment, including APIs, libraries, and configurations.
-fetch_wallet_data.py: Pulls wallet and transaction metadata from the blockchain.
-detect_p2p_transfers.py: Flags wallets for suspicious P2P activities.
-filter_eligible_wallets.py: Filters wallets based on eligibility criteria.
-call_chainlink_vrf.py: Randomly selects eligible wallets using Chainlink VRF.
-export_selected_wallets.py: Logs the selected wallets for transparency and auditing.
-mainfunction.py: Orchestrates the entire workflow and determines whether it’s a reward or burn day.
+Updated Workflow
+
+Data Collection (Off-Chain)
+
+Script: fetch_wallet_data.py
+
+Fetch incremental wallet data updates from the blockchain.
+
+Store changes in the middleware database for further processing.
+
+Filter Eligible Wallets (Off-Chain)
+
+Script: filter_eligible_wallets.py
+
+Exclude wallets that:
+
+Hold less than the minimum required balance.
+
+Are flagged for cooldown periods or suspected behavior.
+
+Are contract or blacklisted wallets.
+
+Score Eligible Wallets (Off-Chain)
+
+Script: score_wallets.py
+
+Assign weighted scores based on criteria:
+
+Holding duration.
+
+Balance stability.
+
+Other dynamic metrics.
+
+Store wallet scores in the middleware database.
+
+Select Wallets Using Chainlink VRF (On-Chain)
+
+Script: call_chainlink_vrf.py
+
+Randomly select 10% of eligible wallets (max 1,000).
+
+Use Chainlink VRF for randomness verification.
+
+Execute Daily Operations (On-Chain)
+
+Script: export_selected_wallets.py
+
+On Reward Days:
+
+Distribute 1% of the reward wallet to selected wallets.
+
+Log transactions for transparency.
+
+On Burn Days:
+
+Execute token burns (1% of the reward wallet).
+
+Post-Execution Updates (Off-Chain)
+
+Update middleware database to reflect new balances and cooldown flags.
+
+Notify holders via Telegram/Discord bots of rewards, cooldowns, or updates.
+
 Script Descriptions
-1. setupanddependencies.py
-Purpose: Prepares the environment by importing required libraries and connecting to APIs.
-Inputs: Blockchain endpoint, API keys, and configuration files.
-Outputs: Sets global variables for use by subsequent scripts.
-2. fetch_wallet_data.py
-Purpose: Fetches on-chain wallet and transaction data.
-Inputs: Blockchain metadata (e.g., wallet balances, transactions).
-Outputs: Structured database or JSON file with wallet data.
-3. detect_p2p_transfers.py
-Purpose: Analyzes transaction patterns to detect suspicious P2P transfers.
-Inputs: Transaction history.
-Outputs: List of flagged wallets for exclusion from rewards.
-4. filter_eligible_wallets.py
-Purpose: Filters wallets to produce a list of eligible holders.
-Inputs: Wallet data, flagged wallets, and eligibility criteria.
-Outputs: Finalized list of eligible wallets for rewards.
-5. call_chainlink_vrf.py
-Purpose: Interfaces with Chainlink VRF to ensure random wallet selection.
-Inputs: Eligible wallets list.
-Outputs: Randomized list of wallets selected for rewards.
-6. export_selected_wallets.py
-Purpose: Saves the list of selected wallets for record-keeping and transparency.
-Inputs: Selected wallets and reward amounts.
-Outputs: Timestamped file or database entry.
-7. mainfunction.py
-Purpose: Serves as the central workflow manager.
-Logic:
-Determines whether it’s a reward or burn day.
-Skips wallet filtering and Chainlink VRF calls on burn days.
-Executes all scripts sequentially on reward days.
-Inputs: Configuration flags, reward/burn logic.
-Outputs: Executes the middleware pipeline.
-Workflow
-Burn Days
-Skip wallet filtering and selection processes.
-Execute burn logic directly, burning 1% of the reward wallet balance.
-Reward Days
-Fetch wallet and transaction data (fetch_wallet_data.py).
-Detect suspicious P2P transfers (detect_p2p_transfers.py).
-Filter wallets based on eligibility (filter_eligible_wallets.py).
-Randomly select wallets using Chainlink VRF (call_chainlink_vrf.py).
-Export the finalized reward distribution list (export_selected_wallets.py).
-Testing Instructions
-Setup:
 
-Install dependencies: pip install -r requirements.txt.
-Configure API keys and blockchain endpoints in setupanddependencies.py.
+fetch_wallet_data.py
+
+Purpose: Fetch wallet data from the blockchain with incremental updates.
+
+Key Features: Reduces overhead by only updating modified or new wallet data.
+
+filter_eligible_wallets.py
+
+Purpose: Apply eligibility filters to wallet data.
+
+Filters: Minimum balance, cooldown flags, blacklist exclusion.
+
+score_wallets.py
+
+Purpose: Assign scores to eligible wallets based on weighted criteria.
+
+Scoring Logic: Holding duration, balance stability, dynamic metrics.
+
+call_chainlink_vrf.py
+
+Purpose: Use Chainlink VRF to randomly select wallets.
+
+Output: List of randomly selected wallets.
+
+export_selected_wallets.py
+
+Purpose: Distribute rewards or execute burns based on daily operations.
+
+Includes: Logging transactions on-chain.
+
+setupanddependencies.py
+
+Purpose: Install required Python libraries and set up dependencies.
+
+mainfunction.py
+
+Purpose: Orchestrates all middleware scripts for seamless workflow execution.
+
+Setup Instructions
+
+Clone the Repository:
+
+git clone <repository-url>
+cd <repository-folder>
+
+Install Dependencies:
+Run the setupanddependencies.py script to install required Python libraries.
+
+python3 setupanddependencies.py
+
 Run the Middleware:
+Execute the main function to trigger the workflow.
 
-Execute mainfunction.py as the entry point.
-Use flags or configuration files to simulate reward and burn days.
-Simulate Reward Days:
+python3 mainfunction.py
 
-Ensure that wallet data is fetched, filtered, and processed through the Chainlink VRF logic.
-Simulate Burn Days:
+Configure Settings:
 
-Verify that wallet filtering and Chainlink VRF calls are skipped.
-Validate Outputs:
+Update blockchain URLs, APIs, and wallet data settings in the respective scripts.
 
-Check the exported files for accuracy.
-Confirm that flagged wallets are excluded from rewards.
-Notes for Testing
-Ensure blockchain endpoints are operational and API keys are valid.
-Test with sample data to validate the P2P detection logic.
-Use logging to debug each script and ensure proper sequencing.
+Modify scoring weights and filters in score_wallets.py and filter_eligible_wallets.py as needed.
+
+Changelog
+
+Latest Updates
+
+Incremental Data Updates:
+
+Optimized fetch_wallet_data.py for change-detection logic.
+
+Streamlined Filtering:
+
+Combined multiple checks into filter_eligible_wallets.py.
+
+Weighted Scoring Mechanism:
+
+Added score_wallets.py for scoring eligible wallets.
+
+Cost Optimization:
+
+Prioritized off-chain computations to reduce on-chain gas costs.
+
 Next Steps
-Refactor code for optimization.
-Test the system under live conditions with real blockchain data.
-Implement further modularity and scalability features as needed.
+
+Testing: Validate individual script functionality and full workflow integration.
+
+Documentation: Keep this README updated with further changes.
+
+Feedback: Collaborate with the dev team to refine scripts and processes.
+
