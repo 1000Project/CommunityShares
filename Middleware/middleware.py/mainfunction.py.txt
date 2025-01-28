@@ -1,0 +1,19 @@
+import subprocess
+
+def run_workflow():
+    scripts = [
+        "setupanddependencies.py",
+        "fetch_wallet_data.py",
+        "detect_p2p_transfers.py",
+        "filter_eligible_wallets.py",
+        "export_selected_wallets.py",
+        "call_chainlink_vrf.py",
+    ]
+
+    for script in scripts:
+        print(f"Running {script}...")
+        subprocess.call(["python", script])
+        print(f"{script} completed.")
+
+if __name__ == "__main__":
+    run_workflow()

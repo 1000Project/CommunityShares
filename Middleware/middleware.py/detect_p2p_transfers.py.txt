@@ -1,0 +1,40 @@
+import json
+
+def detect_p2p_anomalies(transactions, wallets):
+    """
+    Detect anomalies in P2P transfers.
+    """
+    flagged = []
+    for tx in transactions:
+        sender_balance = wallets.get(tx["from"], 0)
+        receiver_balance = wallets.get(tx["to"], 0)
+        if tx["amount"] > sender_balance:
+            flagged.append({"transaction": tx, "reason": "Transfer exceeds sender balance"})
+        elif tx["amount"] > 0.8 * sender_balance:
+            flagged.append({"transaction": tx, "reason": "Suspiciously large transfer"})
+    return flagged
+
+def save_flagged_wallets(flagged_transactions):
+    """
+    Save flagged wallets to a JSON file.
+    """
+    flagged_wallets = set()
+    for flagged in flagged_transactions:
+        flagged_wallets.add(flagged["transaction"]["from"])
+        flagged_wallets.add(flagged["transaction"]["to"])
+
+    with open("data/flagged_wallets.json", "w") as f:
+        json.dump(list(flagged_wallets), f)
+    print("Flagged wallets saved.")
+
+def main():
+    with open("data/transactions.json", "r") as f:
+        transactions = json.load(f)
+    with open("data/wallets.json", "r") as f:
+        wallets = json.load(f)
+
+    flagged_transactions = detect_p2p_anomalies(transactions, wallets)
+    save_flagged_wallets(flagged_transactions)
+
+if __name__ == "__main__":
+    main()

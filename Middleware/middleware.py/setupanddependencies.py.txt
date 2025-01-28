@@ -1,0 +1,23 @@
+import os
+import subprocess
+
+def install_dependencies():
+    """
+    Installs required Python packages.
+    """
+    required_packages = [
+        "requests", "jsonschema", "chainlink", "pandas"
+    ]
+    for package in required_packages:
+        subprocess.call(["pip", "install", package])
+
+def setup_environment():
+    """
+    Sets up initial folders and files for the workflow.
+    """
+    os.makedirs("data", exist_ok=True)  # Folder to store JSON files and outputs
+    print("Environment setup complete.")
+
+if __name__ == "__main__":
+    install_dependencies()
+    setup_environment()
