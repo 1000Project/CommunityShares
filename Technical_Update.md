@@ -42,7 +42,7 @@ Our roadmap ensures that the 1000 Project continues to grow beyond the initial r
 
 - **On-Chain Utility Expansion:** Continue developing governance modules, batch token transfers, and decentralized tools.
 - **DeFi Integration:** Expand $1000 token utility through partnerships with DeFi projects on Shido for staking, lending, and liquidity provision.
-- **Staking Program:** Design a staking mechanism to incentivize long-term holding while offering additional rewards.
+- **Alternate Utility Provisions:** Explore partnerships with DeFi projects on the Shido blockchain to provide utility beyond traditional staking models. Options may include reward pools tied to specific activities, lending incentives, or fee-based services driven by community engagement.
 
 ### **Why This Matters:**
 - Establishes long-term token value beyond the initial rewards period.
@@ -73,6 +73,7 @@ This staggered approach fosters collaboration while protecting critical innovati
 1. **Testnet Deployment:** Finalize deployments on the Shido Testnet and verify reward mechanisms.
 2. **Optimize Gas Usage:** Ensure efficient token transfers and contract interactions.
 3. **Prefund Wallets:** Complete the configuration of 20 prefunded wallets for automated batch token transfers.
+4. **Momentum Shift to Open Source:** Build towards 100% open-source status prior to the expiration of the 1000-day cycle, ensuring the community has full access to contribute, enhance, and govern its evolution.
 4. **Early Governance Integration:** Begin implementing community proposals for key decisions.
 
 ---
