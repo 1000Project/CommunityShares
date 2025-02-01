@@ -1,0 +1,1 @@
+# Contributing Guide\n\nThis section will provide full details on how to contribute to the project (coming soon).

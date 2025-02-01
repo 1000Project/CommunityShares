@@ -10,6 +10,7 @@ Welcome to **CommunityShares**, an integral part of the **1000 Project** ecosyst
 - [Features](#features)
 - [Current Publicly Available Content](#current-publicly-available-content)
 - [Staggered Open-Source Release Plan](#staggered-open-source-release-plan)
+- [Post-1000 Days Roadmap](#post-1000-days-roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 - [Community and Support](#community-and-support)
@@ -37,7 +38,7 @@ Our mission is to create a safer and stronger network by fostering engagement, e
 
 At this stage of development, the repository contains:
 
-- **Weighted Scoring Module:** A dynamic scoring system influenced by community input. This module is crucial for calculating voting weight and rewards distribution fairly based on token holdings and community contributions.
+- **Weighted Scoring Module:** A dynamic scoring system influenced by community input. This module is crucial for calculating voting weight and rewards distribution fairly based on token holdings and community contributions. For full details, check out the [Weighted Scoring Module Documentation](Weighted_Scoring_Proposal/Weighted_Scoring_Module_Documentatin.md).
 
 We’re working to expand the publicly available components in phases as part of our open-source strategy. Please refer to the **[Staggered Open-Source Release Plan](#staggered-open-source-release-plan)** for more details.
 
@@ -49,7 +50,7 @@ We are committed to making CommunityShares a fully open-source and community-gov
 
 1. **Phase 1: Initial Release (Public Utilities)**
    - Open-source components related to governance voting and token distribution.
-   - Provide educational resources to help the community understand and contribute.
+   - Provide resources and insights for driven individuals seeking unconventional blockchain knowledge.
 
 2. **Phase 2: Gradual Expansion**
    - Incrementally release internal modules, including prefunded wallet management and mock contract setups.
@@ -60,6 +61,26 @@ We are committed to making CommunityShares a fully open-source and community-gov
    - Transition to full community governance, with key decisions driven by token holders.
 
 This staggered approach allows us to grow safely while fostering innovation and collaboration.
+
+---
+
+## **Post-1000 Days Roadmap**
+
+As we approach the end of the 1000-day rewards cycle, we’re planning for long-term sustainability and value creation. The community will play a crucial role in guiding our direction, and we’ve outlined key focus areas:
+
+1. **Gradual Expansion of Utility and Governance**
+   - Continue building and refining on-chain utility, such as batch token transfers, governance modules, and decentralized tools.
+   - Expand integration with DeFi services on the Shido blockchain, making the token more functional across different platforms.
+
+2. **Select Key Areas for Immediate Development**
+   - **Staking Mechanism:** Introduce a staking program that offers rewards and long-term holding incentives.
+   - **DeFi Partnerships:** Collaborate with external projects to provide real utility through lending, farming, and liquidity provision.
+
+3. **Early Community Governance Integration**
+   - Let the community take part in shaping the token’s future by voting on major decisions and future development milestones.
+   - Deploy governance proposals that give token holders a voice in determining the project’s utility beyond the initial 1000-day phase.
+
+Our long-term vision ensures that CommunityShares remains dynamic, valuable, and adaptable well beyond its initial purpose.
 
 ---
 
@@ -77,7 +98,7 @@ For more details, check out our contributing guide (coming soon).
 
 ## **License**
 
-This project is licensed under the [MIT License](LICENSE), which allows for open-source use, modification, and distribution.
+This project is licensed under the [MIT License](LICENSE) (click to read), which allows for open-source use, modification, and distribution.
 
 ---
 
@@ -94,9 +115,9 @@ Stay connected and informed:
 
 ## **Call to Action**
 
-**Join us** as we build a decentralized, community-driven future together. Whether you’re here to learn, contribute, or provide feedback, your participation makes us stronger.
+**Join us** as we build a decentralized, community-driven future together. This isn’t for the average Joe. Our community is built differently for those who are different—driven individuals seeking knowledge, empowerment, and an edge.
 
-Let’s empower each other with knowledge and innovation to create a safer, more rewarding network for everyone.
+Explore unconventional blockchain insights, tools, and strategies as we grow together. **This is your movement. Let’s build it.**
 
 **The 1000 Project Team**
 
