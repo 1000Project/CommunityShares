@@ -1,110 +1,102 @@
-# Community Resource Hub for The 1000 Project
+# CommunityShares - Empowering Decentralized Governance
 
-Welcome to the **Community Resource Hub** for The 1000 Project! This section is your go-to destination for understanding how to maximize your involvement, optimize your wallet performance, and stay up-to-date with key developments in the project.
-
----
-
-## **Introduction**
-
-The 1000 Project is a community-driven initiative that aims to revolutionize token holding and reward mechanisms through a balanced, sustainable approach. This resource hub is designed to provide you with everything you need to know about our scoring model, reward system, and community engagement.
+Welcome to **CommunityShares**, an integral part of the **1000 Project** ecosystem. This project is built to drive decentralized governance and community participation, giving Shido holders and early supporters the tools to make impactful decisions through token-powered voting and rewards.
 
 ---
 
-## **What You Can Find Here**
+## **Table of Contents**
 
-This section of the project includes critical resources and guidelines to help you stay informed and involved:
-
-1. **Community-Driven Scoring Model**  
-   The community played a significant role in designing our scoring model, and you can explore the detailed documentation:
-   - [README: Community-Driven Scoring Model](Community_Driven_Scoring_Model/README_CommunityDrivenScoring.md)
-
-2. **Weighted Scoring Proposal**  
-   Learn about the initial proposal and the process that led to the final scoring model:
-   - [README: Weighted Scoring Proposal](Weighted_Scoring_Proposal/README.md)
-   - [Detailed Weighted Metrics Review](Weighted_Scoring_Proposal/Weighted%20Metrics%20Community%20Review.docx)
-
-3. **Guidance for Optimizing Scores**  
-   Maximize your chances of qualifying for daily rewards by following best practices in responsible holding and trading.
-
-4. **Community Feedback & Updates**  
-   Stay updated on any changes, improvements, or community proposals affecting the scoring and reward system.
-
-5. **How to Participate in Governance**  
-   Understand how you can influence the project through proposals, votes, and active discussions.
+- [Overview](#overview)
+- [Features](#features)
+- [Current Publicly Available Content](#current-publicly-available-content)
+- [Staggered Open-Source Release Plan](#staggered-open-source-release-plan)
+- [Contributing](#contributing)
+- [License](#license)
+- [Community and Support](#community-and-support)
 
 ---
 
-## **How the Scoring Model Works**
+## **Overview**
 
-Our scoring model is designed to incentivize responsible holding behavior while promoting fairness and sustainability. Wallets are evaluated using the following criteria:
+**CommunityShares** is designed to bring real-world utility and governance to the community by enabling decentralized voting and token distribution in a transparent, verifiable way. Built on top of the Shido Network, this project empowers users to participate in governance decisions and receive rewards through a streamlined and scalable process.
 
-| **Metric**                  | **Weight (%)** | **Description**                                                                 |
-|----------------------------|----------------|--------------------------------------------------------------------------------|
-| Holding Duration            | 40%            | Rewards long-term commitment with higher scores for extended token holding.    |
-| Balance Stability           | 10%            | Considers wallets with low volatility as more stable and reliable.              |
-| Cooldown Compliance         | 15%            | Ensures wallets follow cooldown rules to prevent frequent trading violations.   |
-| Transaction Behavior        | 15%            | Rewards wallets with low trading frequency, promoting HODLing.                 |
-| P2P Transfer Patterns       | 10%            | Identifies and penalizes bot-like or suspicious P2P transfers.                  |
-| Accumulation History        | 10%            | Encourages organic token accumulation through multiple strategic purchases.    |
+Our mission is to create a safer and stronger network by fostering engagement, education, and collaboration.
 
 ---
 
-## **Getting Started**
+## **Features**
 
-To help you navigate this resource hub, here are some key files and folders you can explore:
-
-- **`/Community_Driven_Scoring_Model/`**  
-  Detailed documentation about the community-driven scoring model.
-
-- **`/Weighted_Scoring_Proposal/`**  
-  The original proposal, community review, and weighted scoring guidelines.
+- **Token-Powered Governance:** Empower community members to vote and make key decisions through token holdings.
+- **Transparent Reward Distributions:** Efficient, verifiable token distributions ensure incentives are delivered fairly.
+- **Scalable Infrastructure:** Prefunded wallet configurations allow for batch token transfers to large groups of users.
+- **Production-Ready Testing Environment:** Advanced testing setups using mock contracts and dynamic fixtures to ensure robust, bug-free deployments.
 
 ---
 
-## **How to Optimize Your Wallet**
+## **Current Publicly Available Content**
 
-To maximize your rewards and ensure qualification, follow these best practices:
+At this stage of development, the repository contains:
 
-- **HODL your tokens:** Wallets with long holding durations earn higher scores. Avoid frequent trades to maintain a stable score.
-- **Follow cooldown rules:** Ensure you don’t trigger cooldown violations by making excessive transactions within short timeframes.
-- **Avoid bot-like P2P transfers:** Only engage in genuine peer-to-peer transactions to avoid penalties.
-- **Accumulate strategically:** Build your holdings gradually to benefit from positive accumulation scores.
+- **Weighted Scoring Module:** A dynamic scoring system influenced by community input. This module is crucial for calculating voting weight and rewards distribution fairly based on token holdings and community contributions.
 
----
-
-## **Staying Connected**
-
-Stay involved and up-to-date by following our community channels:
-
-- **Main Telegram Channel:** [Join here](https://t.me/The1000Project)  
-- **Insider Telegram Updates:** [Link to insider updates]  
-- **X (formerly Twitter):** [Follow us](https://x.com/1000CryptoAI)
-
-We encourage all community members to actively participate, share feedback, and contribute ideas to help grow The 1000 Project.
+We’re working to expand the publicly available components in phases as part of our open-source strategy. Please refer to the **[Staggered Open-Source Release Plan](#staggered-open-source-release-plan)** for more details.
 
 ---
 
-## **FAQs**
+## **Staggered Open-Source Release Plan**
 
-**1. How do I know if my wallet qualifies for rewards?**  
-You can check your score through our upcoming wallet-check tool or by following the criteria in the scoring model.
+We are committed to making CommunityShares a fully open-source and community-governed project over time. To achieve this while balancing security and innovation, we’ve designed a staggered release strategy:
 
-**2. What happens if my wallet score is low?**  
-Low scores may result in disqualification from daily rewards or token burns. Follow the optimization tips to improve your score.
+1. **Phase 1: Initial Release (Public Utilities)**
+   - Open-source components related to governance voting and token distribution.
+   - Provide educational resources to help the community understand and contribute.
 
-**3. Can the scoring model change over time?**  
-Yes, the community has governance power to propose changes and improvements to the scoring model.
+2. **Phase 2: Gradual Expansion**
+   - Incrementally release internal modules, including prefunded wallet management and mock contract setups.
+   - Maintain flexibility to address feedback from early contributors.
+
+3. **Phase 3: Full Open-Source Transition**
+   - Open the entire project, including smart contracts and core infrastructure.
+   - Transition to full community governance, with key decisions driven by token holders.
+
+This staggered approach allows us to grow safely while fostering innovation and collaboration.
 
 ---
 
-## **Final Thoughts**
+## **Contributing**
 
-This resource hub is continuously updated as we progress through our roadmap. Your participation and feedback are critical to our success. Thank you for being a part of The 1000 Project and helping us build a stronger, more sustainable ecosystem.
+We welcome contributions from the community! Although full development details are not yet public, we encourage community involvement by:
 
-Let’s grow together!
+1. **Providing Feedback:** Participate in discussions on GitHub or Telegram to influence future development.
+2. **Contributing Ideas:** Suggest improvements or new features that align with our mission.
+3. **Following Updates:** Stay up to date as we incrementally release new components and invite active contributions.
+
+For more details, check out our contributing guide (coming soon).
 
 ---
 
-If you have questions or need further guidance, feel free to reach out on our community channels or check the documentation in the relevant folders.
+## **License**
+
+This project is licensed under the [MIT License](LICENSE), which allows for open-source use, modification, and distribution.
+
+---
+
+## **Community and Support**
+
+Stay connected and informed:
+
+- **GitHub:** [1000Project/CommunityShares](https://github.com/1000Project/CommunityShares)
+- **Twitter (X):** [@1000CryptoAI](https://twitter.com/1000CryptoAI)
+- **Telegram:** [The 1000 Project](https://t.me/the1000Project)
+- **Medium:** [The 1000 Project](https://medium.com/the-1000-project)
+
+---
+
+## **Call to Action**
+
+**Join us** as we build a decentralized, community-driven future together. Whether you’re here to learn, contribute, or provide feedback, your participation makes us stronger.
+
+Let’s empower each other with knowledge and innovation to create a safer, more rewarding network for everyone.
 
 **The 1000 Project Team**
+
